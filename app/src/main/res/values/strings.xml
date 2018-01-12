@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">udaQuiz</string>
+    <string name="choose_a_category">Choose a category:</string>
+    <string name="cosmos">Cosmos</string>
+    <string name="music">Music</string>
+    <string name="udacity">Udacity</string>
+    <string name="q3_text_cosmos">Do you know how old is the Earth?</string>
+    <string name="q3_radioButton1_cosmos">Around 6,000 years</string>
+    <string name="q3_radioButton2_cosmos">4.5 - 5 billion years</string>
+    <string name="q3_radioButton_cosmos">129 billion years</string>
+    <string name="q3_radioButton4_cosmos">76,000 years</string>
+    <string name="q4_text">How many plantes are in solar system?</string>
+    <string name="q4_radioButton1_cosmos">Twelve</string>
+    <string name="q4_radioButton2_cosmos">Nine</string>
+    <string name="q4_radioButton3_cosmos">Five</string>
+    <string name="q4_radioButton4_cosmos">Eight</string>
+    <string name="q1_text">Which objects are NOT planets?</string>
+    <string name="q1_check1_cosmos">Venus</string>
+    <string name="q1_check2_cosmos">Pluto</string>
+    <string name="q1_check3_cosmos">Charon</string>
+    <string name="q1_check4_cosmos">Jupiter</string>
+</resources>

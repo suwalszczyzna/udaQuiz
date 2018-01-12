@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2d9baa</color>
+    <color name="colorPrimaryDark">#01535f</color>
+    <color name="colorAccent">#ffc240</color>
+    <color name="background_cosmos_dark">#1a262e</color>
+    <color name="submit_green">#03C82F</color>
+</resources>

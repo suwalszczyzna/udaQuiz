@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_cosmos_dark">
+
+    <ImageView
+        android:id="@+id/logo_cosmos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintDimensionRatio="h,5:3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_cosmos" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_cosmos">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/q1_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Tell me, what's your name?"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/name_cosmos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:backgroundTint="@android:color/background_light"
+                android:contentDescription="Name"
+                android:ems="10"
+                android:fontFamily="@font/open_sans_semibold"
+                android:hapticFeedbackEnabled="true"
+                android:inputType="textPersonName"
+                android:shadowColor="@color/colorAccent"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_qestion_1"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/q2_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/q1_text"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <CheckBox
+                android:id="@+id/q1_check1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/checkbox"
+                android:button="@null"
+                android:contextClickable="true"
+                android:fontFamily="@font/open_sans_semibold"
+                android:padding="@dimen/checkbox_padding"
+                android:text="@string/q1_check1_cosmos"
+                android:textAlignment="center"
+                android:textColor="@color/background_cosmos_dark" />
+
+            <CheckBox
+                android:id="@+id/q1_check7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/checkbox"
+                android:button="@null"
+                android:contextClickable="true"
+                android:fontFamily="@font/open_sans_semibold"
+                android:padding="@dimen/checkbox_padding"
+                android:text="@string/q1_check2_cosmos"
+                android:textAlignment="center"
+                android:textColor="@color/background_cosmos_dark" />
+
+            <CheckBox
+                android:id="@+id/q1_check6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/checkbox"
+                android:button="@null"
+                android:contextClickable="true"
+                android:fontFamily="@font/open_sans_semibold"
+                android:padding="@dimen/checkbox_padding"
+                android:text="@string/q1_check3_cosmos"
+                android:textAlignment="center"
+                android:textColor="@color/background_cosmos_dark" />
+
+            <CheckBox
+                android:id="@+id/q1_check5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/checkbox"
+                android:button="@null"
+                android:contextClickable="true"
+                android:fontFamily="@font/open_sans_semibold"
+                android:padding="@dimen/checkbox_padding"
+                android:text="@string/q1_check4_cosmos"
+                android:textAlignment="center"
+                android:textColor="@color/background_cosmos_dark" />
+
+            <TextView
+                android:id="@+id/q3_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/q3_text_cosmos"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/q3_cosmosRadio"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+            <RadioButton
+                android:id="@+id/q3_radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_height"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+
+                android:background="@drawable/checkbox"
+                android:checked="false"
+                android:padding="@dimen/checkbox_padding"
+                android:text="@string/q3_radioButton1_cosmos" />
+
+
+            <RadioButton
+                android:id="@+id/q3_radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_height"
+                android:background="@drawable/checkbox"
+                android:text="@string/q3_radioButton2_cosmos"
+                android:padding="@dimen/checkbox_padding"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"/>
+
+            <RadioButton
+                android:id="@+id/q3_radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_height"
+                android:background="@drawable/checkbox"
+                android:text="@string/q3_radioButton_cosmos"
+                android:padding="@dimen/checkbox_padding"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"/>
+
+            <RadioButton
+                android:id="@+id/q3_radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/radio_height"
+                android:background="@drawable/checkbox"
+                android:text="@string/q3_radioButton4_cosmos"
+                android:padding="@dimen/checkbox_padding"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/q4_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/q4_text"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/q4_cosmosRadio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/q4_radioButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+
+                    android:background="@drawable/checkbox"
+                    android:checked="false"
+                    android:padding="@dimen/checkbox_padding"
+                    android:text="@string/q4_radioButton1_cosmos" />
+
+
+                <RadioButton
+                    android:id="@+id/q4_radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/checkbox"
+                    android:padding="@dimen/checkbox_padding"
+                    android:text="@string/q4_radioButton2_cosmos" />
+
+                <RadioButton
+                    android:id="@+id/q4_radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/checkbox"
+                    android:padding="@dimen/checkbox_padding"
+                    android:text="@string/q4_radioButton3_cosmos" />
+
+                <RadioButton
+                    android:id="@+id/q4_radioButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/checkbox"
+                    android:padding="@dimen/checkbox_padding"
+                    android:text="@string/q4_radioButton4_cosmos" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+
+                android:background="@drawable/submit_button"
+                android:text="Button"
+                android:textColor="@color/background_cosmos_dark" />
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

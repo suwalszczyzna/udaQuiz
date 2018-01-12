@@ -42,7 +42,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/open_sans_semibold"
-                android:text="Tell me, what's your name?"
+                android:text="@string/q1_text_cosmos"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -81,7 +81,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/open_sans_semibold"
-                android:text="@string/q1_text"
+                android:text="@string/q2_text"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -89,7 +89,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <CheckBox
-                android:id="@+id/q1_check1"
+                android:id="@+id/q2_check1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -100,12 +100,12 @@
                 android:contextClickable="true"
                 android:fontFamily="@font/open_sans_semibold"
                 android:padding="@dimen/checkbox_padding"
-                android:text="@string/q1_check1_cosmos"
+                android:text="@string/q2_check1_cosmos"
                 android:textAlignment="center"
                 android:textColor="@color/background_cosmos_dark" />
 
             <CheckBox
-                android:id="@+id/q1_check7"
+                android:id="@+id/q2_check2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -116,12 +116,12 @@
                 android:contextClickable="true"
                 android:fontFamily="@font/open_sans_semibold"
                 android:padding="@dimen/checkbox_padding"
-                android:text="@string/q1_check2_cosmos"
+                android:text="@string/q2_check2_cosmos"
                 android:textAlignment="center"
                 android:textColor="@color/background_cosmos_dark" />
 
             <CheckBox
-                android:id="@+id/q1_check6"
+                android:id="@+id/q2_check3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -132,12 +132,12 @@
                 android:contextClickable="true"
                 android:fontFamily="@font/open_sans_semibold"
                 android:padding="@dimen/checkbox_padding"
-                android:text="@string/q1_check3_cosmos"
+                android:text="@string/q2_check3_cosmos"
                 android:textAlignment="center"
                 android:textColor="@color/background_cosmos_dark" />
 
             <CheckBox
-                android:id="@+id/q1_check5"
+                android:id="@+id/q2_check4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -148,7 +148,7 @@
                 android:contextClickable="true"
                 android:fontFamily="@font/open_sans_semibold"
                 android:padding="@dimen/checkbox_padding"
-                android:text="@string/q1_check4_cosmos"
+                android:text="@string/q2_check4_cosmos"
                 android:textAlignment="center"
                 android:textColor="@color/background_cosmos_dark" />
 
@@ -173,52 +173,52 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent">
 
-            <RadioButton
-                android:id="@+id/q3_radioButton1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/radio_height"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
+                <RadioButton
+                    android:id="@+id/q3_radioButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
 
-                android:background="@drawable/checkbox"
-                android:checked="false"
-                android:padding="@dimen/checkbox_padding"
-                android:text="@string/q3_radioButton1_cosmos" />
+                    android:background="@drawable/checkbox"
+                    android:checked="false"
+                    android:padding="@dimen/checkbox_padding"
+                    android:text="@string/q3_radioButton1_cosmos" />
 
 
-            <RadioButton
-                android:id="@+id/q3_radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/radio_height"
-                android:background="@drawable/checkbox"
-                android:text="@string/q3_radioButton2_cosmos"
-                android:padding="@dimen/checkbox_padding"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"/>
+                <RadioButton
+                    android:id="@+id/q3_radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:background="@drawable/checkbox"
+                    android:text="@string/q3_radioButton2_cosmos"
+                    android:padding="@dimen/checkbox_padding"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"/>
 
-            <RadioButton
-                android:id="@+id/q3_radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/radio_height"
-                android:background="@drawable/checkbox"
-                android:text="@string/q3_radioButton_cosmos"
-                android:padding="@dimen/checkbox_padding"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"/>
+                <RadioButton
+                    android:id="@+id/q3_radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:background="@drawable/checkbox"
+                    android:text="@string/q3_radioButton_cosmos"
+                    android:padding="@dimen/checkbox_padding"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"/>
 
-            <RadioButton
-                android:id="@+id/q3_radioButton4"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/radio_height"
-                android:background="@drawable/checkbox"
-                android:text="@string/q3_radioButton4_cosmos"
-                android:padding="@dimen/checkbox_padding"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"/>
+                <RadioButton
+                    android:id="@+id/q3_radioButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_height"
+                    android:background="@drawable/checkbox"
+                    android:text="@string/q3_radioButton4_cosmos"
+                    android:padding="@dimen/checkbox_padding"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"/>
             </RadioGroup>
 
             <TextView
@@ -292,7 +292,7 @@
             </RadioGroup>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/submit_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -302,7 +302,7 @@
                 android:layout_marginTop="16dp"
 
                 android:background="@drawable/submit_button"
-                android:text="Button"
+                android:text="@string/submit"
                 android:textColor="@color/background_cosmos_dark" />
         </LinearLayout>
     </ScrollView>

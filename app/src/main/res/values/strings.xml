@@ -4,7 +4,7 @@
     <string name="cosmos">Cosmos</string>
     <string name="music">Music</string>
     <string name="udacity">Udacity</string>
-    <string name="q3_text_cosmos">Do you know how old is the Earth?</string>
+    <string name="q3_text_cosmos">Do you know how old the Earth is?</string>
     <string name="q3_radioButton1_cosmos">Around 6,000 years</string>
     <string name="q3_radioButton2_cosmos">4.5 - 5 billion years</string>
     <string name="q3_radioButton_cosmos">129 billion years</string>
@@ -14,9 +14,11 @@
     <string name="q4_radioButton2_cosmos">Nine</string>
     <string name="q4_radioButton3_cosmos">Five</string>
     <string name="q4_radioButton4_cosmos">Eight</string>
-    <string name="q1_text">Which objects are NOT planets?</string>
-    <string name="q1_check1_cosmos">Venus</string>
-    <string name="q1_check2_cosmos">Pluto</string>
-    <string name="q1_check3_cosmos">Charon</string>
-    <string name="q1_check4_cosmos">Jupiter</string>
+    <string name="q2_text">Which astronomical objects are NOT planets?</string>
+    <string name="q2_check1_cosmos">Venus</string>
+    <string name="q2_check2_cosmos">Pluto</string>
+    <string name="q2_check3_cosmos">Charon</string>
+    <string name="q2_check4_cosmos">Jupiter</string>
+    <string name="submit">Submit</string>
+    <string name="q1_text_cosmos">Tell me, what\'s your name?</string>
 </resources>

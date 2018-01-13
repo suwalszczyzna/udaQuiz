@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class CosmosActivity extends AppCompatActivity {
     public String currentLayout;
+    public int numberOfQuestion = 0;
     public Question[] questions = new Question[10];
     public ConstraintLayout checkboxLayout;
     public ConstraintLayout radioLayout;
@@ -32,17 +33,21 @@ public class CosmosActivity extends AppCompatActivity {
         submit.setOnClickListener(submitListener);
 
         makeQuestions();
-        showQuestion(0);
-
-
+        showQuestion(numberOfQuestion);
     }
 
 
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
-            //submitAnswer();
+            submitAnswer();
         }
     };
+
+    private void submitAnswer() {
+        numberOfQuestion++;
+        showQuestion(numberOfQuestion);
+    }
+
     public void makeQuestions(){
         questions[0] = new Question(1, "To jest przykladowe pytanie",
                 "Odpowiedz 1", "Odpowiedz 2", "Odpowiedz 3", "Odpowiedz 4",
@@ -81,7 +86,7 @@ public class CosmosActivity extends AppCompatActivity {
             radioLayout.setVisibility(View.VISIBLE);
             textLayout.setVisibility(View.GONE);
 
-            TextView questionText_radio = findViewById(R.id.questionText_textLayout);
+            TextView questionText_radio = findViewById(R.id.questionText_radioLayout);
             RadioButton radioButton1 = findViewById(R.id.radio_1);
             RadioButton radioButton2 = findViewById(R.id.radio_2);
             RadioButton radioButton3 = findViewById(R.id.radio_3);
@@ -98,6 +103,9 @@ public class CosmosActivity extends AppCompatActivity {
             checkboxLayout.setVisibility(View.GONE);
             radioLayout.setVisibility(View.GONE);
             textLayout.setVisibility(View.VISIBLE);
+
+            TextView questionText_text = findViewById(R.id.questionText_textLayout);
+
         }
     }
 

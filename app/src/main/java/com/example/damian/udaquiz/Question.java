@@ -25,6 +25,12 @@ public class Question {
         this.answer = " ";
     }
 
+    public Question(String questionText, TYPE_OF_ANSWERS typeOfAnswers, String correctAnswer) {
+        this.questionText = questionText;
+        this.typeOfAnswers = typeOfAnswers;
+        this.answer = "";
+        this.correctAnswer = correctAnswer;
+    }
 
     public String getAnswer() {
         return answer;

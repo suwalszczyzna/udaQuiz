@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_cosmos">
 
         <TextView
-            android:id="@+id/questionText3"
+            android:id="@+id/questionText_textLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -90,7 +90,7 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionText3" />
+            app:layout_constraintTop_toBottomOf="@+id/questionText_textLayout" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -222,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_cosmos">
 
         <TextView
-            android:id="@+id/questionText2"
+            android:id="@+id/questionText_radioLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -257,7 +257,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionText2" />
+            app:layout_constraintTop_toBottomOf="@+id/questionText_radioLayout" />
 
         <RadioButton
             android:id="@+id/radio_2"

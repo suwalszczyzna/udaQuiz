@@ -6,15 +6,23 @@ package com.example.damian.udaquiz;
 
 public class Question {
 
-    private int numberQuestion;
+
     private String questionText;
     private String firstAnswer, secondAnswer, thirdAnswer, fourthAnswer;
     private TYPE_OF_ANSWERS typeOfAnswers;
     private String answer;
     private String correctAnswer;
 
-    public Question(int numberQuestion, String questionText, String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, TYPE_OF_ANSWERS typeOfAnswers, String correctAnswer) {
-        this.numberQuestion = numberQuestion;
+
+    public Question(
+            String questionText,
+            String firstAnswer,
+            String secondAnswer,
+            String thirdAnswer,
+            String fourthAnswer,
+            TYPE_OF_ANSWERS typeOfAnswers,
+            String correctAnswer) {
+
         this.questionText = questionText;
         this.firstAnswer = firstAnswer;
         this.secondAnswer = secondAnswer;
@@ -22,7 +30,6 @@ public class Question {
         this.fourthAnswer = fourthAnswer;
         this.typeOfAnswers = typeOfAnswers;
         this.correctAnswer = correctAnswer;
-        this.answer = " ";
     }
 
     public Question(String questionText, TYPE_OF_ANSWERS typeOfAnswers, String correctAnswer) {
@@ -40,13 +47,6 @@ public class Question {
         this.answer = answer;
     }
 
-    public int getNumberQuestion() {
-        return numberQuestion;
-    }
-
-    public void setNumberQuestion(int numberQuestion) {
-        this.numberQuestion = numberQuestion;
-    }
 
     public String getQuestionText() {
         return questionText;
@@ -103,4 +103,5 @@ public class Question {
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
+
 }

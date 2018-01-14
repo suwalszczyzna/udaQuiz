@@ -1,21 +1,20 @@
 package com.example.damian.udaquiz;
 
-import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CosmosActivity extends AppCompatActivity {
-    public String currentLayout;
-    public int numberOfQuestion = 0;
-    public Question[] questions = new Question[10];
+    public int points;
+    public int numberOfQuestion;
+    public Question[] questions = new Question[5];
     public ConstraintLayout checkboxLayout;
     public ConstraintLayout radioLayout;
     public ConstraintLayout textLayout;
@@ -24,54 +23,74 @@ public class CosmosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cosmos);
-
+        points = 0;
+        numberOfQuestion = 0;
         checkboxLayout = findViewById(R.id.checkboxLayout);
         radioLayout = findViewById(R.id.radioLayout);
         textLayout = findViewById(R.id.textLayout);
 
+        makeQuestions();
+        updatePointsText(points);
+        showQuestion(numberOfQuestion);
         Button submit = (Button) findViewById(R.id.submit_button);
         submit.setOnClickListener(submitListener);
-
-        makeQuestions();
-        showQuestion(numberOfQuestion);
     }
 
 
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
-            submitAnswer();
+
+                if (numberOfQuestion < (questions.length - 1)){
+                     submitAnswer(numberOfQuestion);
+                     updatePointsText(points);
+                     numberOfQuestion++;
+                     showQuestion(numberOfQuestion);
+                }
         }
     };
 
-    private void submitAnswer() {
-        numberOfQuestion++;
-        showQuestion(numberOfQuestion);
-    }
 
     public void makeQuestions(){
-        questions[0] = new Question(1,
-                "To jest przykladowe pytanie",
-                "Odpowiedz 1",
-                "Odpowiedz 2",
-                "Odpowiedz 3",
-                "Odpowiedz 4",
-                TYPE_OF_ANSWERS.CHECKBOX,"Odpowiedz 2");
+        questions[0] = new Question("Tell me, what is your name?",
+                TYPE_OF_ANSWERS.TEXT, "SomeName");
+
+        questions[1] = new Question(
+                "Which of these astronomical objects are planets?",
+                "Earth",
+                "Pluto",
+                "Sun",
+                "Jupiter",
+                TYPE_OF_ANSWERS.CHECKBOX,
+                "EarthJupiter");
+
+        questions[2] = new Question(
+                "How old is Earth?",
+                "4.5 - 5 billions years old",
+                "6.000 years old",
+                "47 billions years old",
+                "1 billion years old",
+                TYPE_OF_ANSWERS.RADIO,
+                "4.5 - 5 billions years old");
+
+       questions[3] = new Question(
+                "What is name of our galaxy?",
+                TYPE_OF_ANSWERS.TEXT,
+                 "milky way"
+         );
+        questions[4] = new Question(
+                "How old is Earth?",
+                "4.5 - 5 billions years old",
+                "6.000 years old",
+                "47 billions years old",
+                "1 billion years old",
+                TYPE_OF_ANSWERS.RADIO,
+                "4.5 - 5 billions years old");
 
 
-        questions[1] = new Question(2,
-                "To jest przykladowe pytanie",
-                "Odpowiedz radio",
-                "Odpowiedz radio",
-                "Odpowiedz radio",
-                "Odpowiedz radio",
-                TYPE_OF_ANSWERS.RADIO,"Odpowiedz radio");
-
-        questions[2] = new Question("To jest pytanie otwarte",
-                TYPE_OF_ANSWERS.TEXT, "Damian");
     }
 
-    public void showQuestion(int numerOfQuestion){
-        if (questions[numerOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
+    public void showQuestion(int numberOfQuestion){
+        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
             checkboxLayout.setVisibility(View.VISIBLE);
             radioLayout.setVisibility(View.GONE);
             textLayout.setVisibility(View.GONE);
@@ -83,13 +102,13 @@ public class CosmosActivity extends AppCompatActivity {
             CheckBox checkBox3 = findViewById(R.id.check_3);
             CheckBox checkBox4 = findViewById(R.id.check_4);
 
-            questionText_checkbox.setText(questions[numerOfQuestion].getQuestionText());
-            checkBox1.setText(questions[numerOfQuestion].getFirstAnswer());
-            checkBox2.setText(questions[numerOfQuestion].getSecondAnswer());
-            checkBox3.setText(questions[numerOfQuestion].getThirdAnswer());
-            checkBox4.setText(questions[numerOfQuestion].getFourthAnswer());
+            questionText_checkbox.setText(questions[numberOfQuestion].getQuestionText());
+            checkBox1.setText(questions[numberOfQuestion].getFirstAnswer());
+            checkBox2.setText(questions[numberOfQuestion].getSecondAnswer());
+            checkBox3.setText(questions[numberOfQuestion].getThirdAnswer());
+            checkBox4.setText(questions[numberOfQuestion].getFourthAnswer());
         }
-        if (questions[numerOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
+        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
             checkboxLayout.setVisibility(View.GONE);
             radioLayout.setVisibility(View.VISIBLE);
             textLayout.setVisibility(View.GONE);
@@ -100,21 +119,86 @@ public class CosmosActivity extends AppCompatActivity {
             RadioButton radioButton3 = findViewById(R.id.radio_3);
             RadioButton radioButton4 = findViewById(R.id.radio_4);
 
-            questionText_radio.setText(questions[numerOfQuestion].getQuestionText());
-            radioButton1.setText(questions[numerOfQuestion].getFirstAnswer());
-            radioButton2.setText(questions[numerOfQuestion].getSecondAnswer());
-            radioButton3.setText(questions[numerOfQuestion].getThirdAnswer());
-            radioButton4.setText(questions[numerOfQuestion].getFourthAnswer());
+            questionText_radio.setText(questions[numberOfQuestion].getQuestionText());
+            radioButton1.setText(questions[numberOfQuestion].getFirstAnswer());
+            radioButton2.setText(questions[numberOfQuestion].getSecondAnswer());
+            radioButton3.setText(questions[numberOfQuestion].getThirdAnswer());
+            radioButton4.setText(questions[numberOfQuestion].getFourthAnswer());
 
         }
-        if(questions[numerOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
+        if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
             checkboxLayout.setVisibility(View.GONE);
             radioLayout.setVisibility(View.GONE);
             textLayout.setVisibility(View.VISIBLE);
 
             TextView questionText_text = findViewById(R.id.questionText_textLayout);
+            questionText_text.setText(questions[numberOfQuestion].getQuestionText());
 
         }
+    }
+
+    public void submitAnswer(int numberOfQuestion){
+
+        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
+            String answer = "";
+            CheckBox[] checkBoxes = new CheckBox[4];
+            checkBoxes[0] = findViewById(R.id.check_1);
+            checkBoxes[1] = findViewById(R.id.check_2);
+            checkBoxes[2] = findViewById(R.id.check_3);
+            checkBoxes[3] = findViewById(R.id.check_4);
+
+            for (int i = 0; i < 4; i++) {
+                if(checkBoxes[i].isChecked()){
+                    answer += String.valueOf(checkBoxes[i].getText());
+                    questions[numberOfQuestion].setAnswer(answer);
+                }
+            }
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)){
+                points++;
+            }
+
+
+        }else if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
+            String answer = "";
+            RadioButton[] radioButtons = new RadioButton[4];
+            radioButtons[0] = findViewById(R.id.radio_1);
+            radioButtons[1] = findViewById(R.id.radio_2);
+            radioButtons[2] = findViewById(R.id.radio_3);
+            radioButtons[3] = findViewById(R.id.radio_4);
+
+            for (int i = 0; i < 4; i++) {
+                if(radioButtons[i].isChecked()){
+                    answer += String.valueOf(radioButtons[i].getText());
+                    questions[numberOfQuestion].setAnswer(answer);
+                }
+            }
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)){
+                points++;
+            }
+
+
+        }
+        if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
+            String answer = "";
+            EditText editText = (EditText) findViewById(R.id.editText);
+
+            questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
+
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(questions[numberOfQuestion].getAnswer())) {
+                points++;
+            }
+
+
+        }
+
+
+    }
+
+    public void updatePointsText(int points){
+        int maxPoints = questions.length - 1;
+        String pointsText = "You've got " + String.valueOf(points) + " / " + String.valueOf(maxPoints) + " points.";
+        TextView summary_text = (TextView) findViewById(R.id.summary_text);
+        summary_text.setText(pointsText);
     }
 
 

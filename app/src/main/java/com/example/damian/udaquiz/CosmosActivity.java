@@ -49,16 +49,25 @@ public class CosmosActivity extends AppCompatActivity {
     }
 
     public void makeQuestions(){
-        questions[0] = new Question(1, "To jest przykladowe pytanie",
-                "Odpowiedz 1", "Odpowiedz 2", "Odpowiedz 3", "Odpowiedz 4",
+        questions[0] = new Question(1,
+                "To jest przykladowe pytanie",
+                "Odpowiedz 1",
+                "Odpowiedz 2",
+                "Odpowiedz 3",
+                "Odpowiedz 4",
                 TYPE_OF_ANSWERS.CHECKBOX,"Odpowiedz 2");
 
 
-        questions[1] = new Question(2, "To jest przykladowe pytanie",
-                "Odpowiedz radio", "Odpowiedz radio", "Odpowiedz radio", "Odpowiedz radio",
+        questions[1] = new Question(2,
+                "To jest przykladowe pytanie",
+                "Odpowiedz radio",
+                "Odpowiedz radio",
+                "Odpowiedz radio",
+                "Odpowiedz radio",
                 TYPE_OF_ANSWERS.RADIO,"Odpowiedz radio");
 
-        questions[2] = new Question("To jest pytanie otwarte", TYPE_OF_ANSWERS.TEXT, "Damian");
+        questions[2] = new Question("To jest pytanie otwarte",
+                TYPE_OF_ANSWERS.TEXT, "Damian");
     }
 
     public void showQuestion(int numerOfQuestion){
@@ -79,7 +88,6 @@ public class CosmosActivity extends AppCompatActivity {
             checkBox2.setText(questions[numerOfQuestion].getSecondAnswer());
             checkBox3.setText(questions[numerOfQuestion].getThirdAnswer());
             checkBox4.setText(questions[numerOfQuestion].getFourthAnswer());
-
         }
         if (questions[numerOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
             checkboxLayout.setVisibility(View.GONE);

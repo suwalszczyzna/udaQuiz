@@ -11,13 +11,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class CosmosActivity extends AppCompatActivity {
-    int points;
-    int numberOfQuestion;
-    Question[] questions = new Question[5];
-    ConstraintLayout checkboxLayout;
-    ConstraintLayout radioLayout;
-    ConstraintLayout textLayout;
-    final int ANIM_DURATION = 800;
+    private int points;
+    private int numberOfQuestion;
+    private Question[] questions = new Question[5];
+    private ConstraintLayout checkboxLayout;
+    private ConstraintLayout radioLayout;
+    private ConstraintLayout textLayout;
+    private final int ANIM_DURATION = 800;
 
 
     @Override
@@ -50,6 +50,9 @@ public class CosmosActivity extends AppCompatActivity {
                      updatePointsText(points);
                      numberOfQuestion++;
                      showQuestion(numberOfQuestion);
+                } else {
+                    //TODO Send variables by Intent: points, questions.lenght, start activity_summary
+                    //
                 }
         }
     };

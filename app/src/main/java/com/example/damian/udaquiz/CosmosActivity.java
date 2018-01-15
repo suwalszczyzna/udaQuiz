@@ -3,7 +3,6 @@ package com.example.damian.udaquiz;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,12 +11,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class CosmosActivity extends AppCompatActivity {
-    public int points;
-    public int numberOfQuestion;
-    public Question[] questions = new Question[5];
-    public ConstraintLayout checkboxLayout;
-    public ConstraintLayout radioLayout;
-    public ConstraintLayout textLayout;
+    int points;
+    int numberOfQuestion;
+    Question[] questions = new Question[5];
+    ConstraintLayout checkboxLayout;
+    ConstraintLayout radioLayout;
+    ConstraintLayout textLayout;
+    final int ANIM_DURATION = 800;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,10 @@ public class CosmosActivity extends AppCompatActivity {
         checkboxLayout = findViewById(R.id.checkboxLayout);
         radioLayout = findViewById(R.id.radioLayout);
         textLayout = findViewById(R.id.textLayout);
+
+        checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
+        radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
+        textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
 
         makeQuestions();
         updatePointsText(points);
@@ -51,10 +56,7 @@ public class CosmosActivity extends AppCompatActivity {
 
 
     public void makeQuestions(){
-        questions[0] = new Question("Tell me, what is your name?",
-                TYPE_OF_ANSWERS.TEXT, "SomeName");
-
-        questions[1] = new Question(
+        questions[0] = new Question(
                 "Which of these astronomical objects are planets?",
                 "Earth",
                 "Pluto",
@@ -63,7 +65,7 @@ public class CosmosActivity extends AppCompatActivity {
                 TYPE_OF_ANSWERS.CHECKBOX,
                 "EarthJupiter");
 
-        questions[2] = new Question(
+        questions[1] = new Question(
                 "How old is Earth?",
                 "4.5 - 5 billions years old",
                 "6.000 years old",
@@ -72,12 +74,12 @@ public class CosmosActivity extends AppCompatActivity {
                 TYPE_OF_ANSWERS.RADIO,
                 "4.5 - 5 billions years old");
 
-       questions[3] = new Question(
+        questions[2] = new Question(
                 "What is name of our galaxy?",
                 TYPE_OF_ANSWERS.TEXT,
-                 "milky way"
-         );
-        questions[4] = new Question(
+                "milky way"
+        );
+        questions[3] = new Question(
                 "How old is Earth?",
                 "4.5 - 5 billions years old",
                 "6.000 years old",
@@ -85,6 +87,15 @@ public class CosmosActivity extends AppCompatActivity {
                 "1 billion years old",
                 TYPE_OF_ANSWERS.RADIO,
                 "4.5 - 5 billions years old");
+
+        questions[4] = new Question(
+                "Who wrote \"On the Revolutions of the Heavenly Spheres\" ?",
+                "Johannes Kepler",
+                "Edwin Hubble",
+                "Nicolaus Copernicus",
+                "Isaac Newton",
+                TYPE_OF_ANSWERS.RADIO,
+                "Nicolaus Copernicus");
 
 
     }
@@ -92,7 +103,12 @@ public class CosmosActivity extends AppCompatActivity {
     public void showQuestion(int numberOfQuestion){
         if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
             checkboxLayout.setVisibility(View.VISIBLE);
+            checkboxLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
+
+            radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             radioLayout.setVisibility(View.GONE);
+
+            textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
 
 
@@ -109,8 +125,15 @@ public class CosmosActivity extends AppCompatActivity {
             checkBox4.setText(questions[numberOfQuestion].getFourthAnswer());
         }
         if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
+
+            checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             checkboxLayout.setVisibility(View.GONE);
+
+
             radioLayout.setVisibility(View.VISIBLE);
+            radioLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
+
+            textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
 
             TextView questionText_radio = findViewById(R.id.questionText_radioLayout);
@@ -127,8 +150,12 @@ public class CosmosActivity extends AppCompatActivity {
 
         }
         if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
+
+            checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             checkboxLayout.setVisibility(View.GONE);
+            radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             radioLayout.setVisibility(View.GONE);
+            textLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.VISIBLE);
 
             TextView questionText_text = findViewById(R.id.questionText_textLayout);
@@ -195,7 +222,7 @@ public class CosmosActivity extends AppCompatActivity {
     }
 
     public void updatePointsText(int points){
-        int maxPoints = questions.length - 1;
+        int maxPoints = questions.length;
         String pointsText = "You've got " + String.valueOf(points) + " / " + String.valueOf(maxPoints) + " points.";
         TextView summary_text = (TextView) findViewById(R.id.summary_text);
         summary_text.setText(pointsText);

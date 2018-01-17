@@ -20,13 +20,15 @@ public class CosmosActivity extends AppCompatActivity {
     private ConstraintLayout radioLayout;
     private ConstraintLayout textLayout;
     private final int ANIM_DURATION = 800;
-    private String category;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cosmos);
+
+
 
         points = 0;
         numberOfQuestion = 0;
@@ -39,7 +41,6 @@ public class CosmosActivity extends AppCompatActivity {
         textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
 
         makeQuestions();
-        updatePointsText(points);
         showQuestion(numberOfQuestion);
         Button submit = findViewById(R.id.submit_button);
         submit.setOnClickListener(submitListener);
@@ -49,7 +50,6 @@ public class CosmosActivity extends AppCompatActivity {
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
                     submitAnswer(numberOfQuestion);
-                    updatePointsText(points);
                 if (numberOfQuestion < (questions.length - 1)){
                      numberOfQuestion++;
                      showQuestion(numberOfQuestion);
@@ -223,8 +223,8 @@ public class CosmosActivity extends AppCompatActivity {
 
         }
         if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
-            String answer = "";
-            EditText editText = (EditText) findViewById(R.id.editText);
+
+            EditText editText = findViewById(R.id.editText);
 
             questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
 
@@ -238,12 +238,6 @@ public class CosmosActivity extends AppCompatActivity {
 
     }
 
-    public void updatePointsText(int points){
-
-        String pointsText = "You've got " + String.valueOf(points) + " / " + String.valueOf(maxPoints) + " points.";
-        TextView summary_text = (TextView) findViewById(R.id.summary_text);
-        summary_text.setText(pointsText);
-    }
 
 
 

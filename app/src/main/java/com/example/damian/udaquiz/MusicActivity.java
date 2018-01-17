@@ -20,7 +20,6 @@ public class MusicActivity extends AppCompatActivity {
     private ConstraintLayout radioLayout;
     private ConstraintLayout textLayout;
     private final int ANIM_DURATION = 800;
-    private String category;
 
 
     @Override
@@ -39,7 +38,6 @@ public class MusicActivity extends AppCompatActivity {
         textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
 
         makeQuestions();
-        updatePointsText(points);
         showQuestion(numberOfQuestion);
         Button submit = findViewById(R.id.submit_button);
         submit.setOnClickListener(submitListener);
@@ -49,7 +47,6 @@ public class MusicActivity extends AppCompatActivity {
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
             submitAnswer(numberOfQuestion);
-            updatePointsText(points);
             if (numberOfQuestion < (questions.length - 1)){
                 numberOfQuestion++;
                 showQuestion(numberOfQuestion);
@@ -229,8 +226,8 @@ public class MusicActivity extends AppCompatActivity {
 
         }
         if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
-            String answer = "";
-            EditText editText = (EditText) findViewById(R.id.editText);
+            String answer;
+            EditText editText = findViewById(R.id.editText);
 
             questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
             answer = questions[numberOfQuestion].getAnswer().toLowerCase();
@@ -244,12 +241,6 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
-    public void updatePointsText(int points){
-
-        String pointsText = "You've got " + String.valueOf(points) + " / " + String.valueOf(maxPoints) + " points.";
-        TextView summary_text = (TextView) findViewById(R.id.summary_text);
-        summary_text.setText(pointsText);
-    }
 
 
 

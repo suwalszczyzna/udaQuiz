@@ -5,4 +5,6 @@
     <color name="colorAccent">#ffc240</color>
     <color name="background_cosmos_dark">#1a262e</color>
     <color name="submit_green">#03C82F</color>
+    <color name="background_music_light">#ffffff</color>
+
 </resources>

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class CosmosActivity extends AppCompatActivity {
+public class MusicActivity extends AppCompatActivity {
     private int points;
     private int numberOfQuestion;
     private Question[] questions = new Question[5];
@@ -26,7 +26,7 @@ public class CosmosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cosmos);
+        setContentView(R.layout.activity_music);
 
         points = 0;
         numberOfQuestion = 0;
@@ -48,65 +48,71 @@ public class CosmosActivity extends AppCompatActivity {
 
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
-                    submitAnswer(numberOfQuestion);
-                    updatePointsText(points);
-                if (numberOfQuestion < (questions.length - 1)){
-                     numberOfQuestion++;
-                     showQuestion(numberOfQuestion);
-                } else {
+            submitAnswer(numberOfQuestion);
+            updatePointsText(points);
+            if (numberOfQuestion < (questions.length - 1)){
+                numberOfQuestion++;
+                showQuestion(numberOfQuestion);
+            } else {
 
-                    Intent i = new Intent(CosmosActivity.this, SummaryActivity.class);
-                    String maxPointsString = String.valueOf(maxPoints);
-                    String pointsString = String.valueOf(points);
-                    i.putExtra("maxPointsString", maxPointsString);
-                    i.putExtra("pointsString", pointsString);
-                    startActivity(i);
-                }
+                Intent i = new Intent(MusicActivity.this, SummaryActivity.class);
+                String maxPointsString = String.valueOf(maxPoints);
+                String pointsString = String.valueOf(points);
+                i.putExtra("maxPointsString", maxPointsString);
+                i.putExtra("pointsString", pointsString);
+                startActivity(i);
+            }
         }
     };
 
 
     public void makeQuestions(){
         questions[0] = new Question(
-                "Which of these astronomical objects are planets?",
-                "Earth",
-                "Pluto",
-                "Sun",
-                "Jupiter",
-                TYPE_OF_ANSWERS.CHECKBOX,
-                "EarthJupiter");
+                "What kind of music is \"Kind of Blue\" music album?",
+                "Pop music",
+                "Classic music",
+                "Jazz music",
+                "Hip - hop music",
+                TYPE_OF_ANSWERS.RADIO,
+                "Jazz music");
 
         questions[1] = new Question(
-                "How old is Earth?",
-                "4.5 - 5 billions years old",
-                "6.000 years old",
-                "47 billions years old",
-                "1 billion years old",
-                TYPE_OF_ANSWERS.RADIO,
-                "4.5 - 5 billions years old");
+                "Miles Davis was ...",
+                "Trumpeter",
+                "Composer",
+                "Drummer",
+                "Teacher",
+                TYPE_OF_ANSWERS.CHECKBOX,
+                "TrumpeterComposer");
 
         questions[2] = new Question(
-                "What is name of our galaxy?",
-                TYPE_OF_ANSWERS.TEXT,
-                "milky way"
-        );
-        questions[3] = new Question(
-                "Answer to the Ultimate Question of Life, the Universe, and Everything",
-                "What?!",
-                "42",
-                "Agent 00x",
-                "God is the answer",
+                "What is really name of musician STING ?",
+                "Gordon Sumner",
+                "Gordon Ramsay",
+                "Gordon Matthew Thomas Sumner",
+                "Cosmo Duff Gordon",
                 TYPE_OF_ANSWERS.RADIO,
-                "42");
+                "Gordon Matthew Thomas Sumner");
+
+
+
+        questions[3] = new Question(
+                " \"Weather wise, it's such a lovely day\n" +
+                        "Just say the words and we'll beat the birds down to Acapulco Bay\n" +
+                        "It's perfect for a flying honeymoon, they say\n" +
+                        "Come fly with me, let's fly, let's fly away\"\n" +
+                        "\nWhich artist sang this song?",
+        TYPE_OF_ANSWERS.TEXT,
+                "frank sinatra");
 
         questions[4] = new Question(
-                "Who wrote \"On the Revolutions of the Heavenly Spheres\" ?",
-                "Johannes Kepler",
-                "Edwin Hubble",
-                "Nicolaus Copernicus",
-                "Isaac Newton",
+                "Where is placed the Capitol Records?",
+                "New York",
+                "Los Angeles",
+                "Seattle",
+                "Orlando",
                 TYPE_OF_ANSWERS.RADIO,
-                "Nicolaus Copernicus");
+                "Los Angeles");
 
 
     }
@@ -227,8 +233,8 @@ public class CosmosActivity extends AppCompatActivity {
             EditText editText = (EditText) findViewById(R.id.editText);
 
             questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
-
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(questions[numberOfQuestion].getAnswer().toLowerCase())) {
+            answer = questions[numberOfQuestion].getAnswer().toLowerCase();
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)) {
                 points++;
             }
 

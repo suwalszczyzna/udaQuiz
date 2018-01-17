@@ -46,4 +46,12 @@ public class SummaryActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        if (true) {
+            //nothing to-do
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

@@ -1,13 +1,11 @@
 package com.example.damian.udaquiz;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,16 +16,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button cosmos_btn = (Button) findViewById(R.id.cosmos_btn);
-
-        OnClickListener onClickListener = new OnClickListener() {
+        findViewById(R.id.cosmos_btn).setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {;
                 Intent intent = new Intent(getBaseContext(), CosmosActivity.class);
                 startActivity(intent);
             }
-        };
-        cosmos_btn.setOnClickListener(onClickListener);
+        });
+
+        findViewById(R.id.music_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MusicActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

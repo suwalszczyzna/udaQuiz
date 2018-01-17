@@ -25,5 +25,7 @@
     <string name="submit_button">Submit answer</string>
     <string name="logo_of_cosmos_string_choose_a_category">logo of cosmos @string/choose_a_category</string>
     <string name="name">Name</string>
+    <string name="textview">TextView</string>
+    <string name="play_again">Play again</string>
 
 </resources>

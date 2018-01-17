@@ -1,6 +1,7 @@
 package com.example.damian.udaquiz;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -239,8 +240,16 @@ public class CosmosActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("number_of_question", numberOfQuestion);
+    }
 
-
-
-
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        numberOfQuestion = savedInstanceState.getInt("number_of_question");
+        showQuestion(numberOfQuestion);
+    }
 }

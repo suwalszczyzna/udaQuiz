@@ -1,6 +1,7 @@
 package com.example.damian.udaquiz;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class SummaryActivity extends AppCompatActivity {
+
+    public TextView summaryText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,11 @@ public class SummaryActivity extends AppCompatActivity {
             maxPoints = (String) savedInstanceState.getSerializable("maxPointsString");
             points = (String) savedInstanceState.getSerializable("pointsString");
         }
-        TextView summaryText = (TextView) findViewById(R.id.summary_text_sum);
+        summaryText =  findViewById(R.id.summary_text_sum);
         summaryText.setText(String.format("You've got\n%s / %s points!", points, maxPoints));
 
 
-        Button resetButton = (Button) findViewById(R.id.reset_game_button);
+        Button resetButton = findViewById(R.id.reset_game_button);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,10 +49,24 @@ public class SummaryActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("summary_text", summaryText.getText().toString());
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        summaryText.setText(savedInstanceState.getString("summary_text"));
+    }
+
     @Override
     public void onBackPressed() {
         if (true) {
-            //nothing to-do
+           //do nothing
         } else {
             super.onBackPressed();
         }

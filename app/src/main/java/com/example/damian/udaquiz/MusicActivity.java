@@ -241,7 +241,18 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("number_of_question", numberOfQuestion);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        numberOfQuestion = savedInstanceState.getInt("number_of_question");
+        showQuestion(numberOfQuestion);
+    }
 
 
 

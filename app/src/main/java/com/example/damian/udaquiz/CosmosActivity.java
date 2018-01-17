@@ -1,5 +1,6 @@
 package com.example.damian.udaquiz;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class CosmosActivity extends AppCompatActivity {
     private int points;
     private int numberOfQuestion;
     private Question[] questions = new Question[5];
+    private int maxPoints = questions.length;
     private ConstraintLayout checkboxLayout;
     private ConstraintLayout radioLayout;
     private ConstraintLayout textLayout;
@@ -44,15 +46,19 @@ public class CosmosActivity extends AppCompatActivity {
 
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
-
+                    submitAnswer(numberOfQuestion);
+                    updatePointsText(points);
                 if (numberOfQuestion < (questions.length - 1)){
-                     submitAnswer(numberOfQuestion);
-                     updatePointsText(points);
                      numberOfQuestion++;
                      showQuestion(numberOfQuestion);
                 } else {
-                    //TODO Send variables by Intent: points, questions.lenght, start activity_summary
-                    //
+
+                    Intent i = new Intent(CosmosActivity.this, SummaryActivity.class);
+                    String maxPointsString = String.valueOf(maxPoints);
+                    String pointsString = String.valueOf(points);
+                    i.putExtra("maxPointsString", maxPointsString);
+                    i.putExtra("pointsString", pointsString);
+                    startActivity(i);
                 }
         }
     };
@@ -83,13 +89,13 @@ public class CosmosActivity extends AppCompatActivity {
                 "milky way"
         );
         questions[3] = new Question(
-                "How old is Earth?",
-                "4.5 - 5 billions years old",
-                "6.000 years old",
-                "47 billions years old",
-                "1 billion years old",
+                "Answer to the Ultimate Question of Life, the Universe, and Everything",
+                "What?!",
+                "42",
+                "Agent 00x",
+                "God is the answer",
                 TYPE_OF_ANSWERS.RADIO,
-                "4.5 - 5 billions years old");
+                "42");
 
         questions[4] = new Question(
                 "Who wrote \"On the Revolutions of the Heavenly Spheres\" ?",
@@ -107,6 +113,7 @@ public class CosmosActivity extends AppCompatActivity {
         if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
             checkboxLayout.setVisibility(View.VISIBLE);
             checkboxLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
+
 
             radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             radioLayout.setVisibility(View.GONE);
@@ -144,8 +151,12 @@ public class CosmosActivity extends AppCompatActivity {
             RadioButton radioButton2 = findViewById(R.id.radio_2);
             RadioButton radioButton3 = findViewById(R.id.radio_3);
             RadioButton radioButton4 = findViewById(R.id.radio_4);
-
+            radioButton1.setChecked(false);
+            radioButton2.setChecked(false);
+            radioButton3.setChecked(false);
+            radioButton4.setChecked(false);
             questionText_radio.setText(questions[numberOfQuestion].getQuestionText());
+
             radioButton1.setText(questions[numberOfQuestion].getFirstAnswer());
             radioButton2.setText(questions[numberOfQuestion].getSecondAnswer());
             radioButton3.setText(questions[numberOfQuestion].getThirdAnswer());
@@ -196,6 +207,7 @@ public class CosmosActivity extends AppCompatActivity {
             radioButtons[2] = findViewById(R.id.radio_3);
             radioButtons[3] = findViewById(R.id.radio_4);
 
+
             for (int i = 0; i < 4; i++) {
                 if(radioButtons[i].isChecked()){
                     answer += String.valueOf(radioButtons[i].getText());
@@ -214,7 +226,7 @@ public class CosmosActivity extends AppCompatActivity {
 
             questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
 
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(questions[numberOfQuestion].getAnswer())) {
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(questions[numberOfQuestion].getAnswer().toLowerCase())) {
                 points++;
             }
 
@@ -225,7 +237,7 @@ public class CosmosActivity extends AppCompatActivity {
     }
 
     public void updatePointsText(int points){
-        int maxPoints = questions.length;
+
         String pointsText = "You've got " + String.valueOf(points) + " / " + String.valueOf(maxPoints) + " points.";
         TextView summary_text = (TextView) findViewById(R.id.summary_text);
         summary_text.setText(pointsText);

@@ -63,12 +63,12 @@ public class SummaryActivity extends AppCompatActivity {
         summaryText.setText(savedInstanceState.getString("summary_text"));
     }
 
-    @Override
-    public void onBackPressed() {
-        if (true) {
-           //do nothing
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (true) {
+//           //do nothing
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 }

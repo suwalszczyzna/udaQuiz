@@ -61,6 +61,7 @@ public class CosmosActivity extends AppCompatActivity {
                     String pointsString = String.valueOf(points);
                     i.putExtra("maxPointsString", maxPointsString);
                     i.putExtra("pointsString", pointsString);
+                    finish();
                     startActivity(i);
                 }
         }

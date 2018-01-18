@@ -1,7 +1,9 @@
 package com.example.damian.udaquiz;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.PersistableBundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,12 +65,35 @@ public class SummaryActivity extends AppCompatActivity {
         summaryText.setText(savedInstanceState.getString("summary_text"));
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (true) {
-//           //do nothing
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+
+        quitingDialog();
+
+
+    }
+
+    public void quitingDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SummaryActivity.this);
+        builder
+                .setTitle("Do you want exit game?");
+        builder
+                .setCancelable(false)
+                .setPositiveButton("yes",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, close
+                        // current activity
+                        SummaryActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("no",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        builder.create();
+        builder.show();
+    }
 }

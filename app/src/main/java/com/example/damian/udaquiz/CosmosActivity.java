@@ -10,40 +10,42 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class CosmosActivity extends AppCompatActivity {
     private int points;
     private int numberOfQuestion;
     private Question[] questions = new Question[5];
+    private CheckBox[] checkBoxes = new CheckBox[4];
+    private RadioButton[] radioButtons = new RadioButton[4];
     private int maxPoints = questions.length;
     private ConstraintLayout checkboxLayout;
     private ConstraintLayout radioLayout;
     private ConstraintLayout textLayout;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
+    private TextView questionText_checkbox, questionText_radio, questionText_text;
+    private RadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+    private RadioGroup radioGroup;
+    private Button submit;
+
     private final int ANIM_DURATION = 800;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cosmos);
 
-
-
+        makeViews();
         points = 0;
         numberOfQuestion = 0;
-        checkboxLayout = findViewById(R.id.checkboxLayout);
-        radioLayout = findViewById(R.id.radioLayout);
-        textLayout = findViewById(R.id.textLayout);
-
         checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
         radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
         textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
 
         makeQuestions();
         showQuestion(numberOfQuestion);
-        Button submit = findViewById(R.id.submit_button);
+
         submit.setOnClickListener(submitListener);
     }
 
@@ -87,12 +89,8 @@ public class CosmosActivity extends AppCompatActivity {
                 TYPE_OF_ANSWERS.RADIO,
                 "4.5 - 5 billions years old");
 
+
         questions[2] = new Question(
-                "What is name of our galaxy?",
-                TYPE_OF_ANSWERS.TEXT,
-                "milky way"
-        );
-        questions[3] = new Question(
                 "Answer to the Ultimate Question of Life, the Universe, and Everything",
                 "What?!",
                 "42",
@@ -100,6 +98,12 @@ public class CosmosActivity extends AppCompatActivity {
                 "God is the answer",
                 TYPE_OF_ANSWERS.RADIO,
                 "42");
+
+        questions[3] = new Question(
+                "What is name of our galaxy?",
+                TYPE_OF_ANSWERS.TEXT,
+                "milky way"
+        );
 
         questions[4] = new Question(
                 "Who wrote \"On the Revolutions of the Heavenly Spheres\" ?",
@@ -110,6 +114,26 @@ public class CosmosActivity extends AppCompatActivity {
                 TYPE_OF_ANSWERS.RADIO,
                 "Nicolaus Copernicus");
 
+
+    }
+
+    public void makeViews(){
+        questionText_checkbox = findViewById(R.id.questionTextChechkbox);
+        checkBox1 = findViewById(R.id.check_1);
+        checkBox2 = findViewById(R.id.check_2);
+        checkBox3 = findViewById(R.id.check_3);
+        checkBox4 = findViewById(R.id.check_4);
+        questionText_radio = findViewById(R.id.questionText_radioLayout);
+        radioButton1 = findViewById(R.id.radio_1);
+        radioButton2 = findViewById(R.id.radio_2);
+        radioButton3 = findViewById(R.id.radio_3);
+        radioButton4 = findViewById(R.id.radio_4);
+        radioGroup = findViewById(R.id.radioGroup);
+        questionText_text = findViewById(R.id.questionText_textLayout);
+        checkboxLayout = findViewById(R.id.checkboxLayout);
+        radioLayout = findViewById(R.id.radioLayout);
+        textLayout = findViewById(R.id.textLayout);
+        submit = findViewById(R.id.submit_button);
 
     }
 
@@ -125,13 +149,6 @@ public class CosmosActivity extends AppCompatActivity {
             textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
 
-
-            TextView questionText_checkbox = findViewById(R.id.questionTextChechkbox);
-            CheckBox checkBox1 = findViewById(R.id.check_1);
-            CheckBox checkBox2 = findViewById(R.id.check_2);
-            CheckBox checkBox3 = findViewById(R.id.check_3);
-            CheckBox checkBox4 = findViewById(R.id.check_4);
-
             questionText_checkbox.setText(questions[numberOfQuestion].getQuestionText());
             checkBox1.setText(questions[numberOfQuestion].getFirstAnswer());
             checkBox2.setText(questions[numberOfQuestion].getSecondAnswer());
@@ -139,10 +156,9 @@ public class CosmosActivity extends AppCompatActivity {
             checkBox4.setText(questions[numberOfQuestion].getFourthAnswer());
         }
         if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
-
+            radioGroup.clearCheck();
             checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             checkboxLayout.setVisibility(View.GONE);
-
 
             radioLayout.setVisibility(View.VISIBLE);
             radioLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
@@ -150,15 +166,7 @@ public class CosmosActivity extends AppCompatActivity {
             textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
 
-            TextView questionText_radio = findViewById(R.id.questionText_radioLayout);
-            RadioButton radioButton1 = findViewById(R.id.radio_1);
-            RadioButton radioButton2 = findViewById(R.id.radio_2);
-            RadioButton radioButton3 = findViewById(R.id.radio_3);
-            RadioButton radioButton4 = findViewById(R.id.radio_4);
-            radioButton1.setChecked(false);
-            radioButton2.setChecked(false);
-            radioButton3.setChecked(false);
-            radioButton4.setChecked(false);
+
             questionText_radio.setText(questions[numberOfQuestion].getQuestionText());
 
             radioButton1.setText(questions[numberOfQuestion].getFirstAnswer());
@@ -176,7 +184,7 @@ public class CosmosActivity extends AppCompatActivity {
             textLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.VISIBLE);
 
-            TextView questionText_text = findViewById(R.id.questionText_textLayout);
+
             questionText_text.setText(questions[numberOfQuestion].getQuestionText());
 
         }
@@ -186,7 +194,7 @@ public class CosmosActivity extends AppCompatActivity {
 
         if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
             String answer = "";
-            CheckBox[] checkBoxes = new CheckBox[4];
+
             checkBoxes[0] = findViewById(R.id.check_1);
             checkBoxes[1] = findViewById(R.id.check_2);
             checkBoxes[2] = findViewById(R.id.check_3);
@@ -205,7 +213,7 @@ public class CosmosActivity extends AppCompatActivity {
 
         }else if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
             String answer = "";
-            RadioButton[] radioButtons = new RadioButton[4];
+
             radioButtons[0] = findViewById(R.id.radio_1);
             radioButtons[1] = findViewById(R.id.radio_2);
             radioButtons[2] = findViewById(R.id.radio_3);

@@ -13,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import static java.lang.String.valueOf;
+
 public class CosmosActivity extends AppCompatActivity {
     private int points;
     private int numberOfQuestion;
@@ -59,8 +61,8 @@ public class CosmosActivity extends AppCompatActivity {
             } else {
 
                 Intent i = new Intent(CosmosActivity.this, SummaryActivity.class);
-                String maxPointsString = String.valueOf(maxPoints);
-                String pointsString = String.valueOf(points);
+                String maxPointsString = valueOf(maxPoints);
+                String pointsString = valueOf(points);
                 i.putExtra("maxPointsString", maxPointsString);
                 i.putExtra("pointsString", pointsString);
                 finish();
@@ -188,7 +190,7 @@ public class CosmosActivity extends AppCompatActivity {
 
             for (int i = 0; i < 4; i++) {
                 if (checkBoxes[i].isChecked()) {
-                    answer += String.valueOf(checkBoxes[i].getText());
+                    answer += valueOf(checkBoxes[i].getText());
                     questions[numberOfQuestion].setAnswer(answer);
                 }
             }
@@ -208,7 +210,7 @@ public class CosmosActivity extends AppCompatActivity {
 
             for (int i = 0; i < 4; i++) {
                 if (radioButtons[i].isChecked()) {
-                    answer += String.valueOf(radioButtons[i].getText());
+                    answer += valueOf(radioButtons[i].getText());
                     questions[numberOfQuestion].setAnswer(answer);
                 }
             }
@@ -221,10 +223,9 @@ public class CosmosActivity extends AppCompatActivity {
         if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.TEXT) {
 
             EditText editText = findViewById(R.id.editText);
+            questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()).trim());
 
-            questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
-
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(questions[numberOfQuestion].getAnswer().toLowerCase())) {
+            if (questions[numberOfQuestion].getCorrectAnswer().equalsIgnoreCase(questions[numberOfQuestion].getAnswer())) {
                 points++;
             }
 

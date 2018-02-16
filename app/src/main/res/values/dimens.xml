@@ -2,4 +2,10 @@
 <resources>
     <dimen name="checkbox_padding">16dp</dimen>
     <dimen name="radio_height">48dp</dimen>
+    <dimen name="big_margin">64dp</dimen>
+    <dimen name="small_dp">8dp</dimen>
+    <dimen name="medium_margin">32dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="tiny_margin">4dp</dimen>
+    <dimen name="m_medium_margin">24dp</dimen>
 </resources>

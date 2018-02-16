@@ -223,9 +223,9 @@ public class MusicActivity extends AppCompatActivity {
             String answer;
             EditText editText = findViewById(R.id.editText);
 
-            questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()));
-            answer = questions[numberOfQuestion].getAnswer().toLowerCase();
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)) {
+            questions[numberOfQuestion].setAnswer(String.valueOf(editText.getText()).trim());
+            answer = questions[numberOfQuestion].getAnswer();
+            if (questions[numberOfQuestion].getCorrectAnswer().equalsIgnoreCase(answer)) {
                 points++;
             }
 

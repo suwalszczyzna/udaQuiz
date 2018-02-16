@@ -66,35 +66,4 @@ public class SummaryActivity extends AppCompatActivity {
         summaryText.setText(savedInstanceState.getString("summary_text"));
     }
 
-    @Override
-    public void onBackPressed() {
-
-        quitingDialog();
-
-
-    }
-
-    public void quitingDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(SummaryActivity.this);
-        builder
-                .setTitle("Do you want exit game?");
-        builder
-                .setCancelable(false)
-                .setPositiveButton("yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, close
-                        // current activity
-                        SummaryActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("no",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
-                    }
-                });
-        builder.create();
-        builder.show();
-    }
 }

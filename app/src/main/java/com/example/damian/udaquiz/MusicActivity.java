@@ -38,11 +38,9 @@ public class MusicActivity extends AppCompatActivity {
         makeViews();
         points = 0;
         numberOfQuestion = 0;
-
         checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
         radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
         textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
-
         makeQuestions();
         showQuestion(numberOfQuestion);
 
@@ -53,7 +51,7 @@ public class MusicActivity extends AppCompatActivity {
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
             submitAnswer(numberOfQuestion);
-            if (numberOfQuestion < (questions.length - 1)){
+            if (numberOfQuestion < (questions.length - 1)) {
                 numberOfQuestion++;
                 showQuestion(numberOfQuestion);
             } else {
@@ -63,13 +61,14 @@ public class MusicActivity extends AppCompatActivity {
                 String pointsString = String.valueOf(points);
                 i.putExtra("maxPointsString", maxPointsString);
                 i.putExtra("pointsString", pointsString);
+                finish();
                 startActivity(i);
             }
         }
     };
 
 
-    public void makeViews(){
+    public void makeViews() {
         questionText_checkbox = findViewById(R.id.questionTextChechkbox);
         checkBox1 = findViewById(R.id.check_1);
         checkBox2 = findViewById(R.id.check_2);
@@ -89,7 +88,7 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
-    public void makeQuestions(){
+    public void makeQuestions() {
         questions[0] = new Question(
                 "What kind of music is \"Kind of Blue\" music album?",
                 "Pop music",
@@ -118,14 +117,13 @@ public class MusicActivity extends AppCompatActivity {
                 "Gordon Matthew Thomas Sumner");
 
 
-
         questions[3] = new Question(
                 " \"Weather wise, it's such a lovely day\n" +
                         "Just say the words and we'll beat the birds down to Acapulco Bay\n" +
                         "It's perfect for a flying honeymoon, they say\n" +
                         "Come fly with me, let's fly, let's fly away\"\n" +
                         "\nWhich artist sang this song?",
-        TYPE_OF_ANSWERS.TEXT,
+                TYPE_OF_ANSWERS.TEXT,
                 "frank sinatra");
 
         questions[4] = new Question(
@@ -140,63 +138,48 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
-    public void showQuestion(int numberOfQuestion){
-        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
+    public void showQuestion(int numberOfQuestion) {
+        if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.CHECKBOX) {
             checkboxLayout.setVisibility(View.VISIBLE);
             checkboxLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
-
-
             radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             radioLayout.setVisibility(View.GONE);
-
             textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
-
-
             questionText_checkbox.setText(questions[numberOfQuestion].getQuestionText());
             checkBox1.setText(questions[numberOfQuestion].getFirstAnswer());
             checkBox2.setText(questions[numberOfQuestion].getSecondAnswer());
             checkBox3.setText(questions[numberOfQuestion].getThirdAnswer());
             checkBox4.setText(questions[numberOfQuestion].getFourthAnswer());
         }
-        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
+        if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.RADIO) {
             radioGroup.clearCheck();
             checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             checkboxLayout.setVisibility(View.GONE);
-
             radioLayout.setVisibility(View.VISIBLE);
             radioLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
-
             textLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.GONE);
-
-
-
             questionText_radio.setText(questions[numberOfQuestion].getQuestionText());
-
             radioButton1.setText(questions[numberOfQuestion].getFirstAnswer());
             radioButton2.setText(questions[numberOfQuestion].getSecondAnswer());
             radioButton3.setText(questions[numberOfQuestion].getThirdAnswer());
             radioButton4.setText(questions[numberOfQuestion].getFourthAnswer());
-
         }
-        if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
-
+        if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.TEXT) {
             checkboxLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             checkboxLayout.setVisibility(View.GONE);
             radioLayout.animate().alpha(0.0f).setDuration(ANIM_DURATION);
             radioLayout.setVisibility(View.GONE);
             textLayout.animate().alpha(1.0f).setDuration(ANIM_DURATION);
             textLayout.setVisibility(View.VISIBLE);
-
             questionText_text.setText(questions[numberOfQuestion].getQuestionText());
-
         }
     }
 
-    public void submitAnswer(int numberOfQuestion){
+    public void submitAnswer(int numberOfQuestion) {
 
-        if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.CHECKBOX){
+        if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.CHECKBOX) {
             String answer = "";
             CheckBox[] checkBoxes = new CheckBox[4];
             checkBoxes[0] = findViewById(R.id.check_1);
@@ -205,17 +188,17 @@ public class MusicActivity extends AppCompatActivity {
             checkBoxes[3] = findViewById(R.id.check_4);
 
             for (int i = 0; i < 4; i++) {
-                if(checkBoxes[i].isChecked()){
+                if (checkBoxes[i].isChecked()) {
                     answer += String.valueOf(checkBoxes[i].getText());
                     questions[numberOfQuestion].setAnswer(answer);
                 }
             }
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)){
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)) {
                 points++;
             }
 
 
-        }else if (questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.RADIO){
+        } else if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.RADIO) {
             String answer = "";
             RadioButton[] radioButtons = new RadioButton[4];
             radioButtons[0] = findViewById(R.id.radio_1);
@@ -225,18 +208,18 @@ public class MusicActivity extends AppCompatActivity {
 
 
             for (int i = 0; i < 4; i++) {
-                if(radioButtons[i].isChecked()){
+                if (radioButtons[i].isChecked()) {
                     answer += String.valueOf(radioButtons[i].getText());
                     questions[numberOfQuestion].setAnswer(answer);
                 }
             }
-            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)){
+            if (questions[numberOfQuestion].getCorrectAnswer().equals(answer)) {
                 points++;
             }
 
 
         }
-        if(questions[numberOfQuestion].getTypeOfAnswers()==TYPE_OF_ANSWERS.TEXT){
+        if (questions[numberOfQuestion].getTypeOfAnswers() == TYPE_OF_ANSWERS.TEXT) {
             String answer;
             EditText editText = findViewById(R.id.editText);
 
@@ -264,8 +247,6 @@ public class MusicActivity extends AppCompatActivity {
         numberOfQuestion = savedInstanceState.getInt("number_of_question");
         showQuestion(numberOfQuestion);
     }
-
-
 
 
 }

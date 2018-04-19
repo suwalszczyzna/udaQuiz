@@ -3,4 +3,4 @@
 ![Alt text](/screenshots/screenshot_1.png?raw=true "UdaQuiz - screenshot 1")
 ![Alt text](/screenshots/screenshot_2.png?raw=true "UdaQuiz - screenshot 2")
 ![Alt text](/screenshots/screenshot_3.png?raw=true "UdaQuiz - screenshot 3")
-![Alt text](/screenshots/screnshoot_4.png?raw=true "UdaQuiz - screenshot 4")
+![Alt text](/screenshots/screenshot_4.png?raw=true "UdaQuiz - screenshot 4")
